@@ -1,15 +1,21 @@
-<script>
-  const infoEl = document.getElementById("info-text");
-  const urlParams = new URLSearchParams(window.location.search);
-
-  if (!urlParams.has("vault")) {
-    infoEl.innerText = `⚠️"vault"を指定してください`;
-  } else if (!urlParams.has("name") && !urlParams.has("file") && !urlParams.has("path")) {
-    infoEl.innerText = `⚠️"name", "file", "path" のいずれかを指定してください`;
-  } else {
-    const obsidianUrl = `obsidian://new?${urlParams.toString()}`;
-    window.location.href = obsidianUrl;
-    setTimeout(() => { window.close(); }, 500);
-  }
-</script>
-<p id="info-text">Obsidianを起動しています...</p>
+<html>
+  <head></head>
+  <body class="vsc-initialized">
+    <p id="info-text">Obsidianを起動しています...</p>
+    <script>
+      const infoEl = document.getElementById("info-text");
+      const urlParams = new URLSearchParams(window.location.search);
+      console.log(urlParams);
+      
+      if (!urlParams.has("vault")) {
+        infoEl.innerText = `⚠️URLパラメータ "vault" を指定してください`;
+      } else if (!urlParams.has("name") && !urlParams.has("file") && !urlParams.has("path")) {
+        infoEl.innerText = `⚠️URLパラメータ "name", "file", "path" のいずれかを指定してください`;
+      } else {
+        const obsidianUrl = `obsidian://new?${urlParams.toString()}`;
+        window.location.href = obsidianUrl;
+        // setTimeout(() => { window.close(); }, 500);
+      }
+    </script>
+  </body>
+</html>
