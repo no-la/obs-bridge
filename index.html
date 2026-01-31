@@ -13,6 +13,7 @@
         infoEl.innerText = `⚠️URLパラメータ "name", "file", "path" のいずれかを指定してください`;
       } else {
         const obsidianUrl = `obsidian://new?${urlParams.toString()}`;
+        console.log(urlParams.toString());
         window.location.href = obsidianUrl;
         // setTimeout(() => { window.close(); }, 500);
       }
