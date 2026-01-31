@@ -1,0 +1,8 @@
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const obsidianUrl = `obsidian://new?${urlParams.toString()}`;
+  window.location.href = obsidianUrl;
+  // 実行後はタブを閉じるなどの処理
+  setTimeout(() => { window.close(); }, 500);
+</script>
+<p>Obsidianを起動しています...</p>
