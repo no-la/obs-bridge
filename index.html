@@ -1,8 +1,15 @@
 <script>
+  const infoEl = document.getElementById("info-text");
   const urlParams = new URLSearchParams(window.location.search);
-  const obsidianUrl = `obsidian://new?${urlParams.toString()}`;
-  window.location.href = obsidianUrl;
-  // 実行後はタブを閉じるなどの処理
-  setTimeout(() => { window.close(); }, 500);
+
+  if (!urlParams.has("vault")) {
+    infoEl.innerText = `⚠️"vault"を指定してください`;
+  } else if (!urlParams.has("name") && !urlParams.has("file") && !urlParams.has("path")) {
+    infoEl.innerText = `⚠️"name", "file", "path" のいずれかを指定してください`;
+  } else {
+    const obsidianUrl = `obsidian://new?${urlParams.toString()}`;
+    window.location.href = obsidianUrl;
+    setTimeout(() => { window.close(); }, 500);
+  }
 </script>
-<p>Obsidianを起動しています...</p>
+<p id="info-text">Obsidianを起動しています...</p>
